@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday, My Demon 😈</title>
+  <meta name="theme-color" content="#2a0f3d">
+  <meta name="description" content="A birthday surprise made for a best friend.">
+
+  <!-- Google Fonts (falls back to system fonts if you are offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,500&family=Poppins:wght@300;400;500;600&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="intro">
+<noscript><p style="padding:2rem;color:#fff">Please enable JavaScript to open your surprise 💖</p></noscript>
+
+<!-- ============ ANIMATED BACKGROUND LAYERS (decorative) ============ -->
+<div id="bg" aria-hidden="true">
+  <div class="bg-layer on" data-t="intro"></div>
+  <div class="bg-layer" data-t="welcome"></div>
+  <div class="bg-layer" data-t="login"></div>
+  <div class="bg-layer" data-t="p1"></div>
+  <div class="bg-layer" data-t="p2"></div>
+  <div class="bg-layer" data-t="p3"></div>
+  <div class="bg-layer" data-t="p4"></div>
+  <div class="bg-layer" data-t="p5"></div>
+  <div class="bg-layer" data-t="p6"></div>
+  <div class="bg-layer" data-t="p7"></div>
+  <div class="bg-layer" data-t="p8"></div>
+</div>
+<div id="stars" aria-hidden="true"></div>
+<div id="hearts" aria-hidden="true"></div>
+<div id="balloons" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div id="flash" aria-hidden="true"></div>
+
+<!-- =====================================================================
+     SCREEN 1 — MAGICAL COUNTDOWN (starts automatically)
+     ===================================================================== -->
+<main id="intro" class="screen intro active" data-theme="intro">
+  <div class="inner">
+    <div class="sticker sticker-lg" data-sticker="hug" data-img="assets/images/friends-hug.png"></div>
+
+    <div id="countdown" class="countdown" aria-live="polite">
+      <span id="countNum" class="count-num"></span>
+    </div>
+
+    <div id="introGreeting" class="intro-greeting hidden">
+      <h1 id="greetTitle" class="display glow-text split">Happy Birthday, My Demon! 🎂😈</h1>
+      <p class="subtitle">Something very special is waiting for you…</p>
+      <button type="button" id="openSurprise" class="btn glow">Open Your Surprise 💌</button>
+    </div>
+  </div>
+</main>
+
+<!-- =====================================================================
+     SCREEN 2 — BIRTHDAY WELCOME
+     ===================================================================== -->
+<section id="welcome" class="screen welcome dark-text" data-theme="welcome" aria-hidden="true" inert>
+  <div class="inner">
+    <h2 id="welcomeTitle" class="display glow-text-soft split">Happy Birthday, My Demon! 😈🎉</h2>
+    <p class="subtitle">Today is all about you, yaar.</p>
+    <div class="welcome-art">
+      <div class="cake" data-sticker="cake"></div>
+      <div class="sticker sticker-md" data-sticker="selfie" data-img="assets/images/friends-selfie.png"></div>
+    </div>
+    <button type="button" id="btnContinue" class="btn glow">Continue 💗</button>
+  </div>
+</section>
+
+<!-- =====================================================================
+     SCREEN 3 — ROMANTIC LOGIN
+     ===================================================================== -->
+<section id="login" class="screen login" data-theme="login" aria-hidden="true" inert>
+  <div class="inner">
+    <form id="loginForm" class="glass-card neon" novalidate autocomplete="off">
+      <div class="sticker sticker-sm" data-sticker="highfive" data-img="assets/images/friends-highfive.png"></div>
+      <h2 class="card-title">Unlock Your Surprise</h2>
+
+      <label class="field">
+        <span>Your Name 💛</span>
+        <input id="meName" name="me" type="text" maxlength="24" placeholder="Your name" autocomplete="given-name" enterkeyhint="next">
+        <small id="meErr" class="err" role="alert"></small>
+      </label>
+
+      <label class="field">
+        <span>Your Friend's Name 😈</span>
+        <input id="himName" name="him" type="text" maxlength="24" placeholder="Friend's name" value="My Demon" autocomplete="off" enterkeyhint="go">
+        <small id="himErr" class="err" role="alert"></small>
+      </label>
+
+      <button type="submit" id="btnUnlock" class="btn glow wide">Unlock My Surprise 🔐</button>
+      <p class="hint">🎵 A birthday song will start playing once you unlock</p>
+    </form>
+  </div>
+</section>
+
+<!-- Personalised welcome shown right after unlocking -->
+<div id="welcomeOverlay" class="welcome-overlay" aria-live="polite" hidden>
+  <div class="wo-inner">
+    <div class="wo-heart">💖</div>
+    <h2 id="woTitle"></h2>
+    <p id="woSub"></p>
+  </div>
+</div>
+
+<!-- =====================================================================
+     PAGE 1 — A SPECIAL BIRTHDAY MESSAGE
+     ===================================================================== -->
+<section id="p1" class="screen page p1" data-theme="p1" aria-hidden="true" inert>
+  <div class="inner">
+    <p class="eyebrow rise" style="--i:0">A special birthday message 🎉</p>
+    <h1 class="him-name glow-text rise" style="--i:1"><span class="him">My Demon</span></h1>
+    <div class="hero-art rise" style="--i:2">
+      <div class="cake cake-lg" data-sticker="cake"></div>
+    </div>
+    <p class="lead rise" style="--i:3">
+      Happy Birthday to the person who makes my world a little brighter every day.
+      Today is your special day, <span class="him">My Demon</span>, but having you in my life feels like a gift every day. 🎂😈
+    </p>
+    <p class="from rise" style="--i:4">— your best friend, <span class="me">Me</span> 🤝</p>
+    <button type="button" class="btn glow rise" style="--i:5" data-goto="3">Read My Letter 💌</button>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PAGE 2 — OUR BEAUTIFUL MEMORIES (gallery + lightbox)
+     ===================================================================== -->
+<section id="p2" class="screen page p2 dark-text" data-theme="p2" aria-hidden="true" inert>
+  <div class="inner top">
+    <h2 class="page-title rise" style="--i:0">Our Beautiful Memories 📸</h2>
+    <p class="page-sub rise" style="--i:1">Tap any photo to see it big 💗</p>
+
+    <div class="gallery" id="gallery">
+
+      <!-- ===================================================================
+           📸 HOW TO CHANGE A PHOTO
+           1) Easiest: put your own picture in  assets/images/  and give it
+              the SAME file name (photo1.jpg … photo8.jpg).
+           2) Or change the src="…" path of the <img> below.
+           ✏️ HOW TO CHANGE A CAPTION: edit the text inside <figcaption>.
+           You can add more cards by copying one <figure> block.
+           =================================================================== -->
+
+      <!-- 📸 PHOTO 1  ·  ✏️ CAPTION 1 -->
+      <figure class="photo-card rise" style="--i:2" tabindex="0" role="button" aria-label="Open photo 1">
+        <div class="photo-frame"><img src="assets/images/photo1.jpg" alt="Our memory 1" loading="lazy"></div>
+        <figcaption>Finally it's your birthday, legend 🥳</figcaption>
+      </figure>
+
+      <!-- 📸 PHOTO 2  ·  ✏️ CAPTION 2 -->
+      <figure class="photo-card rise" style="--i:3" tabindex="0" role="button" aria-label="Open photo 2">
+        <div class="photo-frame"><img src="assets/images/photo2.jpg" alt="Our memory 2" loading="lazy"></div>
+        <figcaption>My Demon turns a year older 😈🎂</figcaption>
+      </figure>
+
+      <!-- 📸 PHOTO 3  ·  ✏️ CAPTION 3 -->
+      <figure class="photo-card rise" style="--i:4" tabindex="0" role="button" aria-label="Open photo 3">
+        <div class="photo-frame"><img src="assets/images/photo3.jpg" alt="Our memory 3" loading="lazy"></div>
+        <figcaption>Best friend, forever 🤝</figcaption>
+      </figure>
+
+      <!-- 📸 PHOTO 4  ·  ✏️ CAPTION 4 -->
+      <figure class="photo-card rise" style="--i:5" tabindex="0" role="button" aria-label="Open photo 4">
+        <div class="photo-frame"><img src="assets/images/photo4.jpg" alt="Our memory 4" loading="lazy"></div>
+        <figcaption>My attitude king 😎</figcaption>
+      </figure>
+
+      <!-- 📸 PHOTO 5  ·  ✏️ CAPTION 5 -->
+      <figure class="photo-card rise" style="--i:6" tabindex="0" role="button" aria-label="Open photo 5">
+        <div class="photo-frame"><img src="assets/images/photo5.jpg" alt="Our memory 5" loading="lazy"></div>
+        <figcaption>Light of my days ✨</figcaption>
+      </figure>
+
+      <!-- 📸 PHOTO 6  ·  ✏️ CAPTION 6 -->
+      <figure class="photo-card rise" style="--i:7" tabindex="0" role="button" aria-label="Open photo 6">
+        <div class="photo-frame"><img src="assets/images/photo6.jpg" alt="Our memory 6" loading="lazy"></div>
+        <figcaption>You mean the world to me 🌏</figcaption>
+      </figure>
+
+      <!-- 📸 PHOTO 7  ·  ✏️ CAPTION 7 -->
+      <figure class="photo-card rise" style="--i:8" tabindex="0" role="button" aria-label="Open photo 7">
+        <div class="photo-frame"><img src="assets/images/photo7.jpg" alt="Our memory 7" loading="lazy"></div>
+        <figcaption>Memories that make me smile 🤭💛</figcaption>
+      </figure>
+
+      <!-- 📸 PHOTO 8  ·  ✏️ CAPTION 8 -->
+      <figure class="photo-card rise" style="--i:9" tabindex="0" role="button" aria-label="Open photo 8">
+        <div class="photo-frame"><img src="assets/images/photo8.jpg" alt="Our memory 8" loading="lazy"></div>
+        <figcaption>Thank you for being you 🫂💛</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- Full-screen lightbox for the gallery -->
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button type="button" id="lbBack" class="btn lb-back">← Back to Gallery 🖼️</button>
+  <button type="button" id="lbPrev" class="lb-nav lb-prev" aria-label="Previous photo">‹</button>
+  <figure class="lb-fig">
+    <img id="lbImg" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button type="button" id="lbNext" class="lb-nav lb-next" aria-label="Next photo">›</button>
+</div>
+
+<!-- =====================================================================
+     PAGE 3 — MY LETTER TO YOU
+     ✏️ The letter text is NOT here — edit it in  js/content.js  (letter: [...])
+     ===================================================================== -->
+<section id="p3" class="screen page p3 dark-text" data-theme="p3" aria-hidden="true" inert>
+  <div class="inner">
+    <h2 class="page-title rise" style="--i:0">My Letter to You 💌</h2>
+    <p id="letterHint" class="page-sub rise" style="--i:1">Tap the envelope to open it 💗</p>
+
+    <div id="letterWrap" class="letter-wrap rise" style="--i:2">
+
+      <button type="button" id="envelope" class="env-scene" aria-label="Open the love letter">
+        <span class="env-back"></span>
+        <span class="env-paper"></span>
+        <span class="env-front"></span>
+        <span class="env-flap"></span>
+        <span class="env-seal">😈</span>
+      </button>
+
+      <article id="letterCard" class="letter-card" aria-live="polite">
+        <span class="lh lh1">😈</span><span class="lh lh2">💛</span><span class="lh lh3">🎉</span><span class="lh lh4">✨</span>
+        <div id="letterBody" class="letter-body"></div>
+        <div class="letter-actions">
+          <button type="button" id="btnSkip" class="btn mini ghost">Skip typing ⏩</button>
+          <button type="button" id="btnReread" class="btn mini ghost">Read again ↺</button>
+          <button type="button" id="btnCloseLetter" class="btn mini ghost">Close ✉️</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PAGE 4 — REASONS YOU'RE SPECIAL (cards are built from js/content.js)
+     ===================================================================== -->
+<section id="p4" class="screen page p4" data-theme="p4" aria-hidden="true" inert>
+  <div class="inner top">
+    <h2 class="page-title glow-text-soft rise" style="--i:0">Reasons You're Awesome 😈</h2>
+    <p class="page-sub rise" style="--i:1">Tap a card to flip it 💛</p>
+    <div id="reasonGrid" class="reason-grid"></div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PAGE 5 — OUR LOVE STORY (timeline)
+     ===================================================================== -->
+<section id="p5" class="screen page p5 dark-text" data-theme="p5" aria-hidden="true" inert>
+  <div class="inner top">
+    <h2 class="page-title rise" style="--i:0">Our Friendship Story 🤝</h2>
+    <p class="page-sub rise" style="--i:1">Every chapter with you is my favourite 📖</p>
+
+    <div class="timeline" id="timeline">
+
+      <!-- ===================================================================
+           ✏️ EDIT EACH MILESTONE BELOW:
+             • photo  → change  assets/images/story1.jpg (or replace the file)
+             • date   → edit the text in  <time>
+             • title  → edit the <h3>
+             • story  → edit the <p>
+           Copy a whole <article> block to add more milestones.
+           =================================================================== -->
+
+      <!-- MILESTONE 1 -->
+      <article class="tl-item">
+        <div class="tl-card">
+          <img src="assets/images/story1.jpg" alt="The day we first met" loading="lazy">
+          <div class="tl-text">
+            <time>📅 Add your date here</time>
+            <h3>The Day We First Met 🌸</h3>
+            <p>✏️ Write about the first day you met here. Allhamdullilh, Allah g ne mujhe tumhara jaisa dost diya 🤲🏻</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE 2 -->
+      <article class="tl-item">
+        <div class="tl-card">
+          <img src="assets/images/story2.jpg" alt="Our first conversation" loading="lazy">
+          <div class="tl-text">
+            <time>📅 Add your date here</time>
+            <h3>Our First Conversation 💬</h3>
+            <p>✏️ What did we talk about? Who smiled first? Write your sweet memory here. 🫣</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE 3 -->
+      <article class="tl-item">
+        <div class="tl-card">
+          <img src="assets/images/story3.jpg" alt="A memory I will never forget" loading="lazy">
+          <div class="tl-text">
+            <time>📅 Add your date here</time>
+            <h3>A Memory I'll Never Forget ✨</h3>
+            <p>✏️ A moment that stayed in your heart forever. Write it here in your own words. 🥹</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE 4 -->
+      <article class="tl-item">
+        <div class="tl-card">
+          <img src="assets/images/story4.jpg" alt="The moment we became best friends" loading="lazy">
+          <div class="tl-text">
+            <time>📅 Add your date here</time>
+            <h3>The Moment We Became Best Friends 🤝</h3>
+            <p>✏️ When did you realise you two were best friends? You are always in my mind 💛</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE 5 -->
+      <article class="tl-item">
+        <div class="tl-card">
+          <img src="assets/images/story5.jpg" alt="Our favourite memory together" loading="lazy">
+          <div class="tl-text">
+            <time>📅 Add your date here</time>
+            <h3>Our Favourite Memory Together 📸</h3>
+            <p>✏️ Your favourite day together — the place, the laughs, the little things. 🥰</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- MILESTONE 6 -->
+      <article class="tl-item">
+        <div class="tl-card">
+          <img src="assets/images/story6.jpg" alt="A wish for our future" loading="lazy">
+          <div class="tl-text">
+            <time>📅 Add your date here</time>
+            <h3>A Wish For Our Future 🌏</h3>
+            <p>✏️ Write your dreams for the future here. No distance or tough times can break our friendship 💪🏻</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PAGE 6 — CUTE COUPLE CORNER
+     To use your own cartoon pictures, drop files into assets/images/ with
+     the names in the data-img attributes (friends-hug.png, etc.)
+     ===================================================================== -->
+<section id="p6" class="screen page p6 dark-text" data-theme="p6" aria-hidden="true" inert>
+  <div class="inner top">
+    <h2 class="page-title rise" style="--i:0">Best Friends Corner 🧸😈</h2>
+    <p class="page-sub rise" style="--i:1">Tap the friends — they get silly! 😜</p>
+
+    <div class="couple-grid">
+      <button type="button" class="couple-card rise" style="--i:2" aria-label="Tap the hugging friends">
+        <span class="bubble" aria-hidden="true"></span>
+        <span class="sticker" data-sticker="hug" data-img="assets/images/friends-hug.png"></span>
+        <span class="couple-label">Big hug 🤗</span>
+      </button>
+      <button type="button" class="couple-card rise" style="--i:3" aria-label="Tap the high-five friends">
+        <span class="bubble" aria-hidden="true"></span>
+        <span class="sticker" data-sticker="highfive" data-img="assets/images/friends-highfive.png"></span>
+        <span class="couple-label">High five 🙌</span>
+      </button>
+      <button type="button" class="couple-card rise" style="--i:4" aria-label="Tap the selfie friends">
+        <span class="bubble" aria-hidden="true"></span>
+        <span class="sticker" data-sticker="selfie" data-img="assets/images/friends-selfie.png"></span>
+        <span class="couple-label">Selfie time 🤳</span>
+      </button>
+    </div>
+
+    <div class="surprise-zone rise" style="--i:5">
+      <button type="button" id="heartSurprise" class="heart-btn" aria-expanded="false" aria-controls="coupleMsg">
+        <span class="hb-heart">😈</span>
+        <span class="hb-text">Tap for a surprise</span>
+      </button>
+      <p id="coupleMsg" class="couple-msg" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PAGE 7 — BIRTHDAY WISHES & CAKE
+     ===================================================================== -->
+<section id="p7" class="screen page p7 dark-text" data-theme="p7" aria-hidden="true" inert>
+  <div class="inner">
+    <h2 class="page-title rise" style="--i:0">Birthday Wishes 🎂</h2>
+    <p class="wish-name rise" style="--i:1">Happy Birthday, <span class="him">My Demon</span>! 🥳</p>
+
+    <div id="cake7" class="cake cake-xl rise" style="--i:2" data-sticker="cake"></div>
+
+    <div class="btn-row rise" style="--i:3">
+      <button type="button" id="btnWish" class="btn glow">Make a Birthday Wish ✨</button>
+      <button type="button" id="btnReplay" class="btn ghost-dark">Replay Celebration 🎉</button>
+    </div>
+
+    <div id="wishBox" class="wish-box" aria-live="polite">
+      <p id="wishIntro" class="wish-intro"></p>
+      <ul id="wishList" class="wish-list"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PAGE 8 — FINAL SURPRISE
+     ===================================================================== -->
+<section id="p8" class="screen page p8" data-theme="p8" aria-hidden="true" inert>
+  <div class="inner">
+    <div class="final-heart rise" style="--i:0" data-sticker="heart"></div>
+    <div class="sticker sticker-md rise" style="--i:1" data-sticker="hug" data-img="assets/images/friends-hug.png"></div>
+
+    <h2 class="display glow-text rise" style="--i:2">Happy Birthday, <span class="him">My Demon</span> 😈</h2>
+    <p class="lead rise" style="--i:3">
+      <span class="him">My Demon</span>, you are my best friend 🤝 and one of the biggest blessings
+      in my life 🌏 Thank you for being you. — <span class="me">Me</span> 💛
+    </p>
+
+    <button type="button" id="btnFinal" class="btn glow rise" style="--i:4" aria-expanded="false" aria-controls="finalReveal">One More Surprise 💌</button>
+
+    <div id="finalReveal" class="final-reveal" aria-live="polite">
+      <!-- ✏️ Hidden photo: replace assets/images/hidden-photo.jpg with your favourite picture -->
+      <img id="hiddenPhoto" src="assets/images/hidden-photo.jpg" alt="A hidden surprise photo" loading="lazy">
+      <p id="finalSurprise" class="final-surprise"></p>
+    </div>
+
+    <p id="finalLine" class="final-line rise" style="--i:5"></p>
+
+    <button type="button" id="btnStartAgain" class="btn ghost rise" style="--i:6">Start Again ↺</button>
+  </div>
+</section>
+
+<!-- =====================================================================
+     FIXED CONTROLS (visible after login)
+     ===================================================================== -->
+<button type="button" id="logoutBtn" class="logout">Logout ↗</button>
+
+<nav id="pageNav" class="page-nav" aria-label="Page navigation">
+  <button type="button" id="navPrev" class="nav-btn" aria-label="Previous page">◀ <span>Previous</span></button>
+  <button type="button" id="navHome" class="nav-btn" aria-label="Home page">🏠 <span>Home</span></button>
+  <div id="dots" class="dots" aria-hidden="true"></div>
+  <button type="button" id="navNext" class="nav-btn" aria-label="Next page"><span>Next</span> ▶</button>
+</nav>
+
+<!-- 🎵 FLOATING MUSIC PLAYER -->
+<div id="music" class="music" role="group" aria-label="Background music">
+  <button type="button" id="mPlay" class="m-btn" aria-label="Play music">▶</button>
+  <button type="button" id="mMute" class="m-btn" aria-label="Mute music">🔊</button>
+  <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+  <span id="mNote" class="music-note" role="status" hidden></span>
+</div>
+
+<!-- =====================================================================
+     🎵 BIRTHDAY SONG
+     To use a different song: copy your MP3 into  assets/audio/  and either
+       • name it  birthday-song.mp3  (replacing the old one), OR
+       • change the src="…" below to your file's name.
+     It never plays before the user taps "Unlock My Surprise" (browser rule),
+     and this ONE audio element lives for the whole visit so the music never
+     restarts while you move between pages.
+     ===================================================================== -->
+<audio id="bgm" src="assets/audio/birthday-song.mp3" preload="none" loop></audio>
+
+<script src="content.js"></script>
+<script src="stickers.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

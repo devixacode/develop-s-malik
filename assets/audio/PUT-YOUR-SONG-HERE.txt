@@ -1,0 +1,7 @@
+Put your birthday song in this folder and name it:
+
+    birthday-song.mp3
+
+(or change the src="..." of the <audio id="bgm"> tag at the bottom of index.html)
+
+The website plays it in a loop after the "Unlock My Surprise" button is pressed.
